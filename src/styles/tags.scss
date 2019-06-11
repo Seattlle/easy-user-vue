@@ -1,0 +1,77 @@
+.avue-breadcrumb {
+    &_collapse {
+        line-height: 55px;
+        font-size: 30px !important;
+        &--right {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.avue-tags {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid #f6f6f6;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+
+    .el-tabs--card>.el-tabs__header {
+        margin: 0;
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__nav,
+    .el-tabs--card>.el-tabs__header .el-tabs__item,
+    .el-tabs--card>.el-tabs__header {
+        border: none;
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__item:first-child {
+        border-left-width: 1px
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__item {
+        margin: 0 3px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #ccc;
+        &.is-active {
+            color: #409eff;
+            border-bottom: 2px solid;
+        }
+    }
+    .el-tabs__nav-prev,
+    .el-tabs__nav-next {
+        width: 20px;
+        line-height: 34px;
+        font-size: 18px;
+        text-align: center;
+    }
+    &__box {
+        position: relative;
+        box-sizing: border-box;
+        padding-right: 106px;
+        width: 100%;
+        &--close {
+            .el-tabs__item {
+                &:first-child {
+                    padding: 0 20px !important;
+                    .el-icon-close {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &__menu {
+        position: absolute !important;
+        top: 0;
+        right: 0;
+        padding: 1px 15px;
+        box-sizing: border-box;
+    }
+}

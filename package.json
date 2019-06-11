@@ -1,0 +1,59 @@
+{
+    "name": "easy-user-vue",
+    "version": "1.0.0",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "test:unit": "vue-cli-service test:unit",
+        "test:e2e": "vue-cli-service test:e2e"
+    },
+    "dependencies": {
+        "@smallwei/avue": "^2.0.0-alpha.1",
+        "avue-plugin-transfer": "0.0.3",
+        "avue-plugin-ueditor": "0.0.4",
+        "axios": "^0.18.0",
+        "babel-polyfill": "^6.26.0",
+        "classlist-polyfill": "^1.2.0",
+        "driver.js": "^0.9.6",
+        "element-ui": "^2.9.0",
+        "file-saver": "^2.0.2",
+        "html2canvas": "^1.0.0-alpha.12",
+        "js-cookie": "^2.2.0",
+        "mockjs": "^1.0.1-beta3",
+        "moment": "^2.22.2",
+        "nprogress": "^0.2.0",
+        "script-loader": "^0.7.2",
+        "vue": "^2.6.10",
+        "vue-axios": "^2.1.2",
+        "vue-clipboard2": "^0.3.0",
+        "vue-json-tree-view": "^2.1.4",
+        "vue-quill-editor": "^3.0.6",
+        "vue-router": "^3.0.6",
+        "vuedraggable": "^2.21.0",
+        "vuex": "^3.1.1",
+        "xlsx": "^0.14.3"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.7.0",
+        "@vue/cli-plugin-e2e-cypress": "^3.7.0",
+        "@vue/cli-plugin-eslint": "^3.7.0",
+        "@vue/cli-plugin-unit-mocha": "^3.7.0",
+        "@vue/cli-service": "^3.7.0",
+        "@vue/test-utils": "^1.0.0-beta.25",
+        "chai": "^4.1.2",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^7.0.1",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "lint-staged": {
+        "*.js": [
+            "vue-cli-service lint",
+            "git add"
+        ],
+        "*.vue": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    }
+}
