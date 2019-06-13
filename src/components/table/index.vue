@@ -22,7 +22,7 @@
                         v-for="(item,index) in TableMenu"
                         :key="index"
                         :type="item.css || 'primary'"
-                         :icon="item.buttonIcon"
+                        :icon="item.buttonIcon"
                         @click="handler(item)"
                 >{{item.name}}</el-button>
             </template>
@@ -33,7 +33,7 @@
         <!--弹窗-->
         <form-dialog
                 :show="dialogFormVisible"
-                :option="dialogOption"
+                :option="realDialogOption"
                 :selected="EditObject"
                 :current-method="CurrentEvent"
                 @hideDialog="hideDialog">
@@ -68,6 +68,8 @@
             column: Array,
             option: {},
             addColumn:Array,
+            dialogOption:{},
+
 
             url:'',
             where:{},
@@ -105,27 +107,43 @@
 
                 Object.assign(option,this.option);
 
-                let column=[];
                 this.condition={};
                 for(let i in option.column){
                     let item=option.column[i];
-                    if(!item.editDisplay){
-                        column.push(item)
-                    }
 
                     if(typeof item.searchDefault!=="undefined"){
                         this.condition[item.prop]=item.searchDefault;
                     }
                 }
 
+                return option;
+            },
+            realDialogOption(){
+                let option={
+                    title: '',
+                    menuBtn: false,
+                    column: []
+                };
+
+                Object.assign(option,this.dialogOption);
+
+                let column=option.column;
+                for(let i in this.tableOption.column){
+                    let item=this.tableOption.column[i];
+
+                    if(!item.editDisplay){
+                        column.push(item)
+                    }
+                }
+
                 if(this.addColumn && this.addColumn.length){
-                    this.dialogOption.column=column.concat(this.addColumn)
+                    option.column=column.concat(this.addColumn)
                 }else{
-                    this.dialogOption.column=column;
+                    option.column=column;
                 }
 
                 return option;
-            },
+            }
         },
         data() {
             return {
@@ -138,11 +156,6 @@
                     pageSizes: [15, 30, 45, 60]
                 },
                 CurrentEvent: '',
-                dialogOption: {
-                    title: '',
-                    menuBtn: false,
-                    column: []
-                },
 
                 TableMenu:[],
                 selected:[],
@@ -153,15 +166,15 @@
             }
         },
         mounted(){
-          this.$nextTick(function () {
-              if(this.menu){
-                  if(this.menu.length===0){
-                      this.GetTableMenu();
-                  }else{
-                      this.TableMenu=this.menu;
-                  }
-              }
-          })
+            this.$nextTick(function () {
+                if(this.menu){
+                    if(this.menu.length===0){
+                        this.GetTableMenu();
+                    }else{
+                        this.TableMenu=this.menu;
+                    }
+                }
+            })
         },
 
         methods: {
@@ -189,9 +202,9 @@
                 this.loading = true;
 
                 this.$store.dispatch(this.vuexMethod, params).then(res => {
-                        this.loading = false;
-                        this.page.total = res.data.total;
-                        this.TableData = res.data.list;
+                    this.loading = false;
+                    this.page.total = res.data.total;
+                    this.TableData = res.data.list;
                 })
             },
             //根据url获取数据
@@ -264,8 +277,8 @@
                 if (btn.isDialog) {
 
                     this.dialogFormVisible = true;
-                    this.dialogOption.title=btn.name;
-                    this.dialogOption.sure=btn.callback;
+                    this.realDialogOption.title=btn.name;
+                    this.realDialogOption.sure=btn.callback;
 
                 }else if(btn.callback){
                     btn.callback(this.selected,table);
@@ -277,7 +290,7 @@
             //获取表格按钮
             GetTableMenu(){
                 GetMenuById(this.CurrentMenu.menuId).then(res=>{
-                   this.TableMenu=res.data;
+                    this.TableMenu=res.data;
                 });
             },
 

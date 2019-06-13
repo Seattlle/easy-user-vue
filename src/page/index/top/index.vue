@@ -86,7 +86,7 @@
                             divided>退出系统</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <top-setting></top-setting>
+      <!--<top-setting></top-setting>-->
     </div>
   </div>
 </template>

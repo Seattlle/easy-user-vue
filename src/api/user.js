@@ -50,7 +50,7 @@ export const getAllSystem = () => ajax({
 });
 
 export const logout = () => ajax({
-    url: '/user/logout',
+    url: headers.user+'/sys/user/loginOut',
     method: 'get'
 })
 
