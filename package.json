@@ -39,7 +39,7 @@
         "@vue/cli-plugin-e2e-cypress": "^3.7.0",
         "@vue/cli-plugin-eslint": "^3.7.0",
         "@vue/cli-plugin-unit-mocha": "^3.7.0",
-        "@vue/cli-service": "^3.7.0",
+        "@vue/cli-service": "^5.0.8",
         "@vue/test-utils": "^1.0.0-beta.25",
         "chai": "^4.1.2",
         "compression-webpack-plugin": "^3.0.0",
